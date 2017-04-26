@@ -8,9 +8,13 @@ import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
@@ -23,21 +27,13 @@ import java.beans.PropertyVetoException;
  */
 @Configuration
 @EnableJpaRepositories("mirhusainov.itis.dao")
-public class DataBaseConfig implements EnvironmentAware {
+public class DataBaseConfig{
 
     private static final String jdbcDriver = "com.mysql.jdbc.Driver";
     private static final String jdbcUrl = "jdbc:mysql://localhost:3306/flight_schedule";
     private static final String jdbcUser = "root";
     private static final String jdbcPassword = "1234";
     private static final String hibDialect = "org.hibernate.dialect.MySQL5Dialect";
-
-    @Autowired
-    private Environment environment;
-
-    @Override
-    public void setEnvironment(org.springframework.core.env.Environment environment) {
-        this.environment = environment;
-    }
 
     @Bean
     public EntityManagerFactory entityManagerFactory() throws PropertyVetoException {
@@ -64,6 +60,25 @@ public class DataBaseConfig implements EnvironmentAware {
         dataSource.setUser(jdbcUser);
         dataSource.setPassword(jdbcPassword);
         return dataSource;
+    }
+
+
+    @Bean
+    @Primary
+    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory);
+        return transactionManager;
+    }
+
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslator() {
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
+
+    @Bean
+    public PersistenceAnnotationBeanPostProcessor persistenceAnnotationBean() {
+        return new PersistenceAnnotationBeanPostProcessor();
     }
 
 }
