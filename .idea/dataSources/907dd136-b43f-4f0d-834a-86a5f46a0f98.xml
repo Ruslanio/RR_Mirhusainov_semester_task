@@ -12,5 +12,88 @@
     <schema id="6" parent="1" name="sakila"/>
     <schema id="7" parent="1" name="sys"/>
     <schema id="8" parent="1" name="world"/>
+    <table id="9" parent="2" name="countries"/>
+    <table id="10" parent="2" name="flights"/>
+    <table id="11" parent="2" name="users"/>
+    <column id="12" parent="9" name="country_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="13" parent="9" name="name">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <key id="14" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>country_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="15" parent="10" name="flight_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="16" parent="10" name="number">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="17" parent="10" name="plane_type">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="18" parent="10" name="departure_point">
+      <Position>4</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="19" parent="10" name="destination_point">
+      <Position>5</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="20" parent="10" name="country_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="21" parent="10" name="flights_countries_country_id_fk">
+      <ColNames>country_id</ColNames>
+    </index>
+    <key id="22" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>flight_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="23" parent="10" name="flights_countries_country_id_fk">
+      <ColNames>country_id</ColNames>
+      <RefSchemaName>flight_schedule</RefSchemaName>
+      <RefTableName>countries</RefTableName>
+      <RefColNames>country_id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="24" parent="11" name="user_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="25" parent="11" name="user_name">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="26" parent="11" name="email">
+      <Position>3</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="27" parent="11" name="password">
+      <Position>4</Position>
+      <DataType>varchar(59)|0</DataType>
+    </column>
+    <key id="28" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

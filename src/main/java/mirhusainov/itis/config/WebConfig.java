@@ -10,6 +10,8 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
+import java.util.Properties;
+
 /**
  * Created by Ruslan on 26.04.2017.
  */
@@ -21,6 +23,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
     @Bean
     public FreeMarkerViewResolver fmResolver(){
         FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
+        resolver.setCache(false);
         resolver.setPrefix("");
         resolver.setSuffix(".ftl");
         resolver.setContentType("text/html;charset=UTF-8");
@@ -32,6 +35,9 @@ public class WebConfig extends WebMvcConfigurerAdapter{
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
         configurer.setDefaultEncoding("UTF-8");
         configurer.setTemplateLoaderPath("WEB-INF/view/");
+        configurer.setFreemarkerSettings(new Properties(){{
+            this.put("default_encoding","UTF-8");
+        }});
         return configurer;
     }
 

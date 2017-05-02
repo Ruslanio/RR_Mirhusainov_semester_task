@@ -1,45 +1,41 @@
 package mirhusainov.itis.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
- * Created by Ruslan on 26.04.2017.
+ * Created by Ruslan on 27.04.2017.
  */
-//Flight - рейс, не уверен, но гугл так сказал
 @Entity
-public class Flight {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    private int number;
-
+@Table(name = "flights", schema = "flight_schedule")
+public class FlightsEntity {
+    private int flightId;
+    private Integer number;
     private String planeType;
-
     private String departurePoint;
-
     private String destinationPoint;
 
-    public Long getId() {
-        return id;
+    @Id
+    @Column(name = "flight_id")
+    public int getFlightId() {
+        return flightId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setFlightId(int flightId) {
+        this.flightId = flightId;
     }
 
-    public int getNumber() {
+    @Basic
+    @Column(name = "number")
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
+    @Basic
+    @Column(name = "plane_type")
     public String getPlaneType() {
         return planeType;
     }
@@ -48,6 +44,8 @@ public class Flight {
         this.planeType = planeType;
     }
 
+    @Basic
+    @Column(name = "departure_point")
     public String getDeparturePoint() {
         return departurePoint;
     }
@@ -56,6 +54,8 @@ public class Flight {
         this.departurePoint = departurePoint;
     }
 
+    @Basic
+    @Column(name = "destination_point")
     public String getDestinationPoint() {
         return destinationPoint;
     }
@@ -63,4 +63,5 @@ public class Flight {
     public void setDestinationPoint(String destinationPoint) {
         this.destinationPoint = destinationPoint;
     }
+
 }

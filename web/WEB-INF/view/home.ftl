@@ -1,3 +1,23 @@
+<#include "head.ftl">
 <div>
-    Hello!!!
+    <h3>
+        Available counties:
+    </h3>
+<#list countries as country>
+    <div class = "">
+        <p><a href = "/country=${country.countryId}">${country.name}</a></p>
+        <#if admin>
+            //TODO
+        </#if>
+    </div>
+<#else>
+    <p>
+        Sorry, there are no available countries yet.
+    </p>
+</#list>
+</div>
+
+
+<div>
+    <a href = "logout">Logout</a>
 </div>
