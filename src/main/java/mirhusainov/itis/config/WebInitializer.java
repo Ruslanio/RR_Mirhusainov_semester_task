@@ -32,5 +32,12 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
                 "/*"
         };
     }
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+        encodingFilter.setEncoding("UTF-8");
+        encodingFilter.setForceEncoding(true);
+        return new Filter[]{encodingFilter};
+    }
 
 }

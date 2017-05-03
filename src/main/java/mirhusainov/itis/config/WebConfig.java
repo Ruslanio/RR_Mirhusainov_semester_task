@@ -1,5 +1,6 @@
 package mirhusainov.itis.config;
 
+import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
+import java.io.IOException;
 import java.util.Properties;
 
 /**
@@ -31,7 +33,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
     }
 
     @Bean
-    public FreeMarkerConfigurer fmConfigurer(){
+    public FreeMarkerConfigurer fmConfigurer() throws IOException, TemplateException {
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
         configurer.setDefaultEncoding("UTF-8");
         configurer.setTemplateLoaderPath("/WEB-INF/view/");
