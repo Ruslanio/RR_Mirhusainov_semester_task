@@ -1,6 +1,6 @@
 <#assign tags=JspTaglibs["http://www.springframework.org/tags/form"]>
 
-<@tags.form action = "/sign-in" method = "post" modelAttribute = "userSIholder">
+<@tags.form action = "/login" method = "post" modelAttribute = "userSignInHolder">
 <fieldset>
     <div>
         <@tags.label path="email">Email</@tags.label>

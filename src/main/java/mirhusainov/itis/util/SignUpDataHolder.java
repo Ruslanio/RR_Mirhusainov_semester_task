@@ -3,6 +3,8 @@ package mirhusainov.itis.util;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Size;
+
 /**
  * Created by Ruslan on 27.04.2017.
  */
@@ -15,6 +17,7 @@ public class SignUpDataHolder {
     private String name;
 
     @NotBlank(message = "this field required")
+    @Size(min = 3 , message = "password must contain at least 3 symbols")
     private String password;
 
     @NotBlank(message = "this field required")

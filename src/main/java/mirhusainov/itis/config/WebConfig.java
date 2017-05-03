@@ -34,7 +34,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
     public FreeMarkerConfigurer fmConfigurer(){
         FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
         configurer.setDefaultEncoding("UTF-8");
-        configurer.setTemplateLoaderPath("WEB-INF/view/");
+        configurer.setTemplateLoaderPath("/WEB-INF/view/");
         configurer.setFreemarkerSettings(new Properties(){{
             this.put("default_encoding","UTF-8");
         }});

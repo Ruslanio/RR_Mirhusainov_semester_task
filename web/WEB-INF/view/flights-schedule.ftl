@@ -20,4 +20,7 @@
         </div>
     </div>
 </@tags.form>
+    <div>
+        <a href="/admin/country=${country_id}/new-flight"> Add flight </a>
+    </div>
 </fieldset>

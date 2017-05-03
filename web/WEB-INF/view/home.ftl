@@ -7,7 +7,7 @@
     <div class = "">
         <p><a href = "/country=${country.countryId}">${country.name}</a></p>
         <#if admin>
-            //TODO
+            <#include "country-form-delete.ftl">
         </#if>
     </div>
 <#else>
@@ -15,9 +15,12 @@
         Sorry, there are no available countries yet.
     </p>
 </#list>
+    <#if admin>
+        <a href="/admin/new-country"> Add country </a>
+    </#if>
 </div>
 
 
 <div>
-    <a href = "logout">Logout</a>
+    <a href = "/logout">Logout</a>
 </div>
