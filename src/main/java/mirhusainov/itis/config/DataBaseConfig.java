@@ -17,6 +17,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -27,6 +28,7 @@ import java.beans.PropertyVetoException;
  */
 @Configuration
 @EnableJpaRepositories("mirhusainov.itis.dao")
+@EnableTransactionManagement
 public class DataBaseConfig{
 
     private static final String jdbcDriver = "com.mysql.jdbc.Driver";
@@ -53,7 +55,7 @@ public class DataBaseConfig{
     }
 
     @Bean
-    private DataSource dataSource() throws PropertyVetoException {
+    public DataSource dataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass(jdbcDriver);
         dataSource.setJdbcUrl(jdbcUrl);

@@ -48,4 +48,5 @@ public class WebConfig extends WebMvcConfigurerAdapter{
     public freemarker.template.Configuration fmConfiguration(FreeMarkerConfig freeMarkerConfig){
         return freeMarkerConfig.getConfiguration();
     }
+
 }

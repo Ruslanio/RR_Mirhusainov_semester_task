@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.jws.soap.SOAPBinding;
 import javax.validation.Valid;
 
 /**
@@ -62,7 +61,7 @@ public class AuthenticationController {
             user.setPassword(encoder.encode(holder.getPassword()));//md5
 
         } else {
-
+            return "sign-up-pass-dont-match";
         }
 
         if (!userService.getAll().contains(user)){

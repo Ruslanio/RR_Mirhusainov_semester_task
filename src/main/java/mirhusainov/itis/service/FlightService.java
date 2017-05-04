@@ -2,12 +2,16 @@ package mirhusainov.itis.service;
 
 import mirhusainov.itis.dao.FlightJPA;
 import mirhusainov.itis.entities.FlightsEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * Created by Ruslan on 27.04.2017.
  */
+@Service
+@Transactional
 public class FlightService {
     private final FlightJPA flightJPA;
 
