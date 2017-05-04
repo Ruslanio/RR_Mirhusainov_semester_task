@@ -6,7 +6,7 @@
         Flights for ${country_name}: <hr>
     </div>
 <@tags.form action="/country=${country_id}/flight-list" method="post" modelAttribute="points">
-    <div>
+    <div class="w3-container">
         <@tags.label path="departure-point">Departure:</@tags.label>
         <@tags.input path="departure-point" type="text"/>
         <@tags.errors path="departure-point"/>
@@ -16,7 +16,7 @@
         <@tags.errors path="destination-point"/>
 
         <div>
-            <input type="submit" value="Search">
+            <input type="submit" class="w3-button" value="Search">
         </div>
     </div>
 </@tags.form>

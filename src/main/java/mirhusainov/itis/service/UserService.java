@@ -1,7 +1,7 @@
 package mirhusainov.itis.service;
 
 import mirhusainov.itis.dao.UserJPA;
-import mirhusainov.itis.entities.UsersEntity;
+import mirhusainov.itis.entities.UserEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,15 +20,15 @@ public class UserService {
         this.userJPA = userJPA;
     }
 
-    public void add(UsersEntity user){
+    public void add(UserEntity user){
         userJPA.save(user);
     }
 
-    public UsersEntity getOneById(Long id){
+    public UserEntity getOneById(Long id){
         return userJPA.findOne(id);
     }
 
-    public List<UsersEntity> getAll(){
+    public List<UserEntity> getAll(){
         return userJPA.findAll();
     }
 }

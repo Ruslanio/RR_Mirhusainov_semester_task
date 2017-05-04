@@ -16,6 +16,6 @@
         <input type="submit" value="Sign ip">
     </div>
 </fieldset>
-<a href="/sign-up">Sign up</a>
+<a href="/sign-up" class="w3-button">Sign up</a>
 
 </@tags.form>

@@ -1,7 +1,7 @@
 package mirhusainov.itis.logging;
 
-import mirhusainov.itis.entities.CountriesEntity;
-import mirhusainov.itis.entities.UsersEntity;
+import mirhusainov.itis.entities.CountryEntity;
+import mirhusainov.itis.entities.UserEntity;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -19,6 +19,9 @@ public class AopLogger {
 
     private Logger logger = Logger.getLogger(getClass());
 
+    {
+        BasicConfigurator.configure();
+    }
     @Before("execution(* mirhusainov.itis.controllers.AdminController.add*(..))")
     public void addLog(){
         logger.info("admin added something");
@@ -31,15 +34,13 @@ public class AopLogger {
 
     @After("execution(* mirhusainov.itis.service.UserService.add(..))")
     public void userAddedLog(JoinPoint point){
-        BasicConfigurator.configure();
-        UsersEntity user = (UsersEntity) point.getArgs()[0];
+        UserEntity user = (UserEntity) point.getArgs()[0];
         logger.info("user " + user.getUserName() + "is added to the base");
     }
 
     @After("execution(* mirhusainov.itis.service.CountryService.add(..))")
     public void CountryAddedLog(JoinPoint point){
-        BasicConfigurator.configure();
-        CountriesEntity country = (CountriesEntity) point.getArgs()[0];
+        CountryEntity country = (CountryEntity) point.getArgs()[0];
         logger.info("country " + country.getName() + "is added to the base");
 
     }

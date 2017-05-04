@@ -4,7 +4,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy>
+        <aop:include name="logger"/>
+    </aop:aspectj-autoproxy>
 
     <bean id="logger" class="mirhusainov.itis.logging.AopLogger"/>
 </beans>

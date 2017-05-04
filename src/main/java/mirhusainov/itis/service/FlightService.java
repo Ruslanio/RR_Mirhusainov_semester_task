@@ -1,7 +1,7 @@
 package mirhusainov.itis.service;
 
 import mirhusainov.itis.dao.FlightJPA;
-import mirhusainov.itis.entities.FlightsEntity;
+import mirhusainov.itis.entities.FlightEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,23 +20,23 @@ public class FlightService {
     }
 
 
-    public void addFlight(FlightsEntity flight){
+    public void addFlight(FlightEntity flight){
         flightJPA.save(flight);
     }
 
-    public FlightsEntity getOneFlightById(Long id){
+    public FlightEntity getOneFlightById(Long id){
         return flightJPA.findOne(id);
     }
 
-    public List<FlightsEntity> getFlights(String depPoint,String destPoint){
+    public List<FlightEntity> getFlights(String depPoint,String destPoint){
         return flightJPA.findAllByDeparturePointIsAndDestinationPointIs(depPoint,destPoint);
     }
 
-    public List<FlightsEntity> getFlights(String depPoint){
+    public List<FlightEntity> getFlights(String depPoint){
         return flightJPA.findAllByDeparturePointIs(depPoint);
     }
 
-    public List<FlightsEntity> getFlights(){
+    public List<FlightEntity> getFlights(){
         return flightJPA.findAll();
     }
 

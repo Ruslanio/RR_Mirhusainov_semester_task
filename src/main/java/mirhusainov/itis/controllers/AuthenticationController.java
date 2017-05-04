@@ -1,8 +1,6 @@
 package mirhusainov.itis.controllers;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import mirhusainov.itis.entities.UsersEntity;
+import mirhusainov.itis.entities.UserEntity;
 import mirhusainov.itis.service.UserService;
 import mirhusainov.itis.util.SignInDataHolder;
 import mirhusainov.itis.util.SignUpDataHolder;
@@ -52,7 +50,7 @@ public class AuthenticationController {
         if (bindingResult.hasErrors()) {
             return "sign-up";
         }
-        UsersEntity user = new UsersEntity();
+        UserEntity user = new UserEntity();
 
         if (holder.getPassword().equals(holder.getRepeatedPassword())) {
 

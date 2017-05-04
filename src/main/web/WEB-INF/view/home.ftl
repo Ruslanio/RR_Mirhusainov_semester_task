@@ -16,11 +16,7 @@
     </p>
 </#list>
     <#if admin>
-        <a href="/admin/new-country"> Add country </a>
+        <a href="/admin/new-country" class="w3-button"> Add country </a>
     </#if>
 </div>
 
-
-<div>
-    <a href = "/logout">Logout</a>
-</div>

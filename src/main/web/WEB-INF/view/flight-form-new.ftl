@@ -3,7 +3,7 @@
 <div>
 <@tags.form action = "/admin/country=${country_id}/new-flight" method = "post" modelAttribute = "new_flight">
     <fieldset>
-        <div>
+        <div class="w3-container">
             <@tags.label path ="number">Number: </@tags.label>
             <@tags.input path="number" type="text"/>
             <@tags.errors path="number"/>
@@ -26,7 +26,7 @@
             <hr>
 
 
-            <input type="submit" value="Add">
+            <input type="submit" class="w3-button" value="Add">
         </div>
     </fieldset>
 </@tags.form>

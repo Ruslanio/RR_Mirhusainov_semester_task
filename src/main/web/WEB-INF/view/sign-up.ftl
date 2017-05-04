@@ -2,6 +2,7 @@
 
 <@tags.form action = "/sign-up" method = "post" modelAttribute = "userSignUpHolder">
 <fieldset>
+    <div class="w3-container"></div>
     <div>
         <@tags.label path="email">Email:</@tags.label>
         <@tags.input path="email" type="email"/>
@@ -23,8 +24,11 @@
         <@tags.errors path="repeatPassword"/>
     </div>
     <div>
-        <input type="submit" value="Sign up">
+        <input type="submit" class="w3-button" value="Sign up">
+    </div>
     </div>
 </fieldset>
-
 </@tags.form>
+<div>
+    <a href="/sign-in" class="w3-button"> Sign in</a>
+</div>

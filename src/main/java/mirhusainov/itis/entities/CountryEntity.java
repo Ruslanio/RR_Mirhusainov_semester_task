@@ -1,15 +1,28 @@
 package mirhusainov.itis.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
- * Created by Ruslan on 27.04.2017.
+ * Created by Ruslan on 04.05.2017.
  */
 @Entity
 @Table(name = "countries", schema = "flight_schedule")
-public class CountriesEntity {
+public class CountryEntity {
     private int countryId;
     private String name;
+    private List<FlightEntity> flights;
+
+    @OneToMany(mappedBy = "countriesByCountryId", cascade = CascadeType.ALL, orphanRemoval = true)
+    public List<FlightEntity> getFlight() {
+        return flights;
+    }
+
+    public void setFlight(List<FlightEntity> flight) {
+        this.flights = flight;
+    }
+
+
 
     @Id
     @Column(name = "country_id")

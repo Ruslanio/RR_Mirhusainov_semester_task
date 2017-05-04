@@ -3,23 +3,23 @@ package mirhusainov.itis.entities;
 import javax.persistence.*;
 
 /**
- * Created by Ruslan on 27.04.2017.
+ * Created by Ruslan on 04.05.2017.
  */
 @Entity
 @Table(name = "users", schema = "flight_schedule")
-public class UsersEntity {
-    private int userId;
+public class UserEntity {
+    private long userId;
     private String userName;
     private String email;
     private String password;
 
     @Id
     @Column(name = "user_id")
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -52,6 +52,5 @@ public class UsersEntity {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
 }

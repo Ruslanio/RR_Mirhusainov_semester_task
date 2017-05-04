@@ -1,7 +1,6 @@
 import mirhusainov.itis.config.CoreConfig;
 import mirhusainov.itis.config.DataBaseConfig;
-import mirhusainov.itis.config.WebConfig;
-import mirhusainov.itis.entities.UsersEntity;
+import mirhusainov.itis.entities.UserEntity;
 import mirhusainov.itis.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,15 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Ruslan on 04.05.2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {WebConfig.class,DataBaseConfig.class, CoreConfig.class})
+@ContextConfiguration(classes = {DataBaseConfig.class, CoreConfig.class})
 public class MainTest {
     private static String ADMIN_EMAIL;
     private static Long ADMIN_ID;
@@ -33,7 +30,7 @@ public class MainTest {
 
     @Test
     public void thereMustBeAdmin(){
-        UsersEntity expectedAdmin = userService.getOneById(ADMIN_ID);
+        UserEntity expectedAdmin = userService.getOneById(ADMIN_ID);
         assertEquals(expectedAdmin.getEmail(),ADMIN_EMAIL);
     }
 

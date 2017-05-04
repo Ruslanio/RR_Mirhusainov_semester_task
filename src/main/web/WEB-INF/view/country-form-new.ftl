@@ -4,11 +4,11 @@
     <h4>Enter country name: </h4>
     <@tags.form action = "/admin/new-country" method = "post" modelAttribute = "new_country">
          <fieldset>
-             <div>
+             <div class="w3-container">
                  <@tags.input path="name" type="text"/>
                  <@tags.errors path="name"/>
 
-                 <input type="submit" value="Add">
+                 <input class="w3-button" type="submit" value="Add">
              </div>
          </fieldset>
     </@tags.form>

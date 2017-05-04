@@ -3,24 +3,25 @@ package mirhusainov.itis.entities;
 import javax.persistence.*;
 
 /**
- * Created by Ruslan on 27.04.2017.
+ * Created by Ruslan on 04.05.2017.
  */
 @Entity
 @Table(name = "flights", schema = "flight_schedule")
-public class FlightsEntity {
-    private int flightId;
+public class FlightEntity {
+    private long flightId;
     private Integer number;
     private String planeType;
     private String departurePoint;
     private String destinationPoint;
+    private CountryEntity countriesByCountryId;
 
     @Id
     @Column(name = "flight_id")
-    public int getFlightId() {
+    public long getFlightId() {
         return flightId;
     }
 
-    public void setFlightId(int flightId) {
+    public void setFlightId(long flightId) {
         this.flightId = flightId;
     }
 
@@ -64,4 +65,14 @@ public class FlightsEntity {
         this.destinationPoint = destinationPoint;
     }
 
+
+    @ManyToOne
+    @JoinColumn(name = "country_id", referencedColumnName = "country_id")
+    public CountryEntity getCountriesByCountryId() {
+        return countriesByCountryId;
+    }
+
+    public void setCountriesByCountryId(CountryEntity countriesByCountryId) {
+        this.countriesByCountryId = countriesByCountryId;
+    }
 }

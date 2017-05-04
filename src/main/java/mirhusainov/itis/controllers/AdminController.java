@@ -1,7 +1,7 @@
 package mirhusainov.itis.controllers;
 
-import mirhusainov.itis.entities.CountriesEntity;
-import mirhusainov.itis.entities.FlightsEntity;
+import mirhusainov.itis.entities.CountryEntity;
+import mirhusainov.itis.entities.FlightEntity;
 import mirhusainov.itis.service.CountryService;
 import mirhusainov.itis.service.FlightService;
 import mirhusainov.itis.util.NewCountryDataHolder;
@@ -22,6 +22,7 @@ public class AdminController {
     private final FlightService flightService;
 
     public AdminController(CountryService countryService, FlightService flightService) {
+        System.out.println("Admin Controller Inizialazed");
         this.countryService = countryService;
         this.flightService = flightService;
     }
@@ -35,7 +36,7 @@ public class AdminController {
     }
     @RequestMapping(value = "/admin/new-country", method = RequestMethod.POST)
     public String addCountry(@ModelAttribute("new_country") @Valid NewCountryDataHolder holder){
-        CountriesEntity country = new CountriesEntity();
+        CountryEntity country = new CountryEntity();
         country.setName(holder.getName());
         if (!countryService.getAll().contains(country))
             countryService.add(country);
@@ -51,7 +52,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/country={country_id}/new-flight", method = RequestMethod.POST)
     public String addFlight(@ModelAttribute("new_flight") @Valid NewFlightDataHolder holder, @PathVariable("country_id") String country_id){
-        FlightsEntity flight = new FlightsEntity();
+        FlightEntity flight = new FlightEntity();
         flight.setNumber(holder.getNumber());
         flight.setPlaneType(holder.getPlaneType());
         flight.setDeparturePoint(holder.getDepPoint());

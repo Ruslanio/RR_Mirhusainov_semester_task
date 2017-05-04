@@ -1,7 +1,8 @@
+
 package mirhusainov.itis.service;
 
 import mirhusainov.itis.dao.CountryJPA;
-import mirhusainov.itis.entities.CountriesEntity;
+import mirhusainov.itis.entities.CountryEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,19 +20,22 @@ public class CountryService {
         this.countryJPA = countryJPA;
     }
 
-    public void add(CountriesEntity country){
+
+    public void add(CountryEntity country) {
         countryJPA.save(country);
     }
 
-    public CountriesEntity getById(Long id){
+
+    public CountryEntity getById(Long id) {
         return countryJPA.findOne(id);
     }
 
-    public List<CountriesEntity> getAll(){
+
+    public List<CountryEntity> getAll() {
         return countryJPA.findAll();
     }
 
-    public void remove(Long id){
+    public void remove(Long id) {
         countryJPA.delete(id);
     }
 }

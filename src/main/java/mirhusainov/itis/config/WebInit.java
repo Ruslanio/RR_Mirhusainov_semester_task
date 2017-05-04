@@ -10,7 +10,8 @@ import javax.servlet.Filter;
  * Created by Ruslan on 26.04.2017.
  */
 
-public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+@Order(1)
+public class WebInit extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     @Override
     protected Class<?>[] getRootConfigClasses() {

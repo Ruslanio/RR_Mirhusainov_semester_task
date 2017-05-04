@@ -1,8 +1,8 @@
 package mirhusainov.itis.controllers;
 
-import mirhusainov.itis.entities.CountriesEntity;
-import mirhusainov.itis.entities.FlightsEntity;
-import mirhusainov.itis.entities.UsersEntity;
+import mirhusainov.itis.entities.CountryEntity;
+import mirhusainov.itis.entities.FlightEntity;
+import mirhusainov.itis.entities.UserEntity;
 import mirhusainov.itis.service.CountryService;
 import mirhusainov.itis.service.FlightService;
 import mirhusainov.itis.service.UserService;
@@ -25,26 +25,28 @@ import java.util.List;
  */
 @Controller
 public class MainController {
-    private final CountryService countryService;
+    private final CountryService countryServiceImpl;
     private final UserService userService;
     private final FlightService flightService;
 
-    public MainController(CountryService countryService, UserService userService, FlightService flightService) {
-        this.countryService = countryService;
+    public MainController(CountryService countryServiceImpl, UserService userService, FlightService flightService) {
+        System.out.println("MainController init");
+        this.countryServiceImpl = countryServiceImpl;
         this.userService = userService;
         this.flightService = flightService;
     }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String home(Model model) {
-        List<CountriesEntity> countries = countryService.getAll();
+        System.out.println("/home");
+        List<CountryEntity> countries = countryServiceImpl.getAll();
         model.addAttribute("countries", countries);
         return "home";
     }
 
     @RequestMapping(value = "/country={country_id}")
     public String certainCountry(@PathVariable("country_id") Long id, Model model) {
-        CountriesEntity country = countryService.getById(id);
+        CountryEntity country = countryServiceImpl.getById(id);
         model.addAttribute("country_id", id);
         model.addAttribute("country_name", country.getName());
 
@@ -53,7 +55,7 @@ public class MainController {
 
     @RequestMapping(value = "/country={country_id}/flight-schedule", method = RequestMethod.POST)
     public String certainSchedule(@ModelAttribute("points") @Valid PointsDataHolder holder, Model model, @PathVariable("country_id") Long id) {
-        List<FlightsEntity> flights;
+        List<FlightEntity> flights;
         String depPoint = holder.getDeparturePoint();
         String destPoint = holder.getDestinationPoint();
 
@@ -73,13 +75,13 @@ public class MainController {
 
     @RequestMapping(value = "/country=${country_id}/flight-schedule/flight-list/flight=${flight_id}", method = RequestMethod.GET)
     public String certainFlight(@PathVariable("flight_id") Long flight_id, @PathVariable("country_id") Long country_id, Model model) {
-        FlightsEntity flight = flightService.getOneFlightById(flight_id);
+        FlightEntity flight = flightService.getOneFlightById(flight_id);
         model.addAttribute("flight", flight);
         return "flight";
     }
 
-    private UsersEntity getCurrentUser(Model model) {
-        UsersEntity user = (UsersEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    private UserEntity getCurrentUser(Model model) {
+        UserEntity user = (UserEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ArrayList<GrantedAuthority> authorities = (ArrayList<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 
         model.addAttribute("isAdmin", false);

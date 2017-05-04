@@ -1,7 +1,7 @@
 package mirhusainov.itis.security;
 
 import mirhusainov.itis.dao.UserJPA;
-import mirhusainov.itis.entities.UsersEntity;
+import mirhusainov.itis.entities.UserEntity;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,7 +31,7 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String email = authentication.getName();
-        UsersEntity user = userJPA.findOneByEmail(email);
+        UserEntity user = userJPA.findOneByEmail(email);
 
         if (user == null){
             throw new UsernameNotFoundException("user not found!");
